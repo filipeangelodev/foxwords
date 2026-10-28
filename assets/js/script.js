@@ -115,6 +115,37 @@ $(document).ready( function(){
     });
 
     // Escolha um tema
+    $('[data-fox-words-status="theme-random"]').on('click', function(e){
+        e.preventDefault();
+        const $themes = get_fox_words_list(), 
+            $listThemeSort = get_fox_words_list_sort_theme(),
+            $data = get_fox_words();
+
+        console.log($data.theme);
+
+        const themeSort = Math.floor(( Math.random() * $themes[$listThemeSort].words.length) + 1 );
+
+        if( $data.theme ){
+
+            $('[data-fox-words-status="restart-new-game"]').attr('data-fox-words-theme-slug', $listThemeSort);
+
+            const myModal = new bootstrap.Modal('#modalContinueGame');
+            myModal.show();
+
+        }else{
+
+            set_fox_words(
+                $data.lettersCorrect,
+                $data.lettersWrong,
+                $data.lettersTotal,
+                $themes[$listThemeSort].name,
+                $themes[$listThemeSort].words[themeSort].split('')
+            );
+
+            window.location.href = 'jogo.html';
+        }
+    });
+
     $('body').on('click', '[data-target-theme]', function(e){
         e.preventDefault();
         const $this = $(this), 
@@ -195,7 +226,7 @@ const load_fox_words_data = () => {
     $data = get_fox_words();
 
     if( typeof $data != undefined && $data != null ){
-        
+
         if( $data.theme ){
 
             $('.letters-lenght').text($data.words.length + ' Letras');
@@ -224,8 +255,6 @@ const load_fox_words_data = () => {
         reset_fox_words_data();
     }
 
-    
-
     $.each($themes, function(slug, theme){
         $('.list-themes').append(`<button type="button" class="btn btn-secondary w-100 mb-2" data-target-theme="${slug}">${theme.name}</button>`);
     });
@@ -247,14 +276,27 @@ const load_fox_words_game_success = () => {
 const load_fox_words_game_error = () => {
     jQuery('.alert-danger').removeClass('d-none');
     jQuery('[data-target-letter]:not(.btn-danger, .btn-success)').prop('disabled', true);
+    jQuery('.btn.palpitar').prop('disabled', true);
     setTimeout(function(){
         jQuery('.alert-danger').addClass('d-none');
         jQuery('[data-target-letter]:not(.btn-danger, .btn-success)').prop('disabled', false);
+        jQuery('.btn.palpitar').prop('disabled', false);
     }, 5000);
 };
 
 const the_fox_words_remove_duplicates = (arr) =>  {
     return arr.filter((item, index) => arr.indexOf(item) === index);
+}
+
+const get_fox_words_list_sort_theme = () => {
+    const $themes = get_fox_words_list(),
+        $themesKeys = Object.keys(get_fox_words_list());
+
+    var themeSort = $themesKeys[
+        Math.floor(Math.random() * $themesKeys.length)
+    ];
+
+    return themeSort;
 }
 
 const get_fox_words_list = () => {
@@ -436,7 +478,7 @@ const get_fox_words_list = () => {
                 "vingadores",
                 "minecraft",
                 "pokemon",
-                "Zootopia",
+                "zootopia",
                 "wandinha",
             ]
         },
