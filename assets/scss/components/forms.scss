@@ -1,0 +1,8 @@
+// Form Default
+.form-default{
+
+    input[type="text"]{
+        @extend .text-uppercase;
+    }
+
+}

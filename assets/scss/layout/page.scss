@@ -1,0 +1,44 @@
+// Content
+#content-app{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100vh;
+    @extend .px-2;
+}
+
+// Main
+#main-app{
+
+    ul.the-words{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.325rem;
+        justify-content: center;
+        list-style-type: none;
+        margin: 2rem 0;
+        padding: 0;
+        li{
+            border-bottom: 2px solid $body-color;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 0.325rem;
+            line-height: 1;
+            width: 2rem;
+            @extend .text-uppercase;
+            &:not(.active){
+                color: $body-bg;
+            }
+        }
+
+        &.active{
+            li{
+                color: #FFF;
+                background-color: $success;
+                border-color: $success;
+                border-radius: 0.325rem;
+            }
+        }
+    }
+
+}

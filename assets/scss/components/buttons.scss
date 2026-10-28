@@ -1,0 +1,12 @@
+// Default
+.btn{
+    @extend .text-uppercase;
+    svg{
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+.btn-primary{
+    @extend .text-white;
+}

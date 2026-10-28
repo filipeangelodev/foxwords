@@ -1,0 +1,31 @@
+// Keyboard
+.keyboard{
+    @extend .mb-5;
+    &__line{
+        display: flex;
+        justify-content: center;
+        gap: 0.325rem;
+        &:not(:last-child){
+            margin-bottom: 0.325rem;
+        }
+        .btn{
+            @extend .p-1;
+            width: 2rem;
+            height: 2rem;
+            font-size: 0.875rem;
+
+            &:not(.btn-danger, .btn-success){
+                background-color: $gray;
+                border-color: #c1c1c1;
+                &:hover{
+                    background-color: #d1d1d1;
+                }
+            }
+
+            &.btn-backspace{
+                width: 2.75rem;
+            }
+
+        }
+    }
+}

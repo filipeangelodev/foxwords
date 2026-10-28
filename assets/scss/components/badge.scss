@@ -1,0 +1,17 @@
+// Default
+.badge-theme-name{
+    font-size: 0.875rem;
+
+    p{
+        margin-bottom: 0.5rem;
+    }
+
+    p:last-child{
+        margin-bottom: 0;
+    }
+
+    strong{
+        font-size: 1.5rem;
+        color: $body-color;
+    }
+}

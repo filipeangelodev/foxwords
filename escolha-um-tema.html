@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fox Words</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    
+    <div id="content-app" class="text-center">
+        <header id="header-app" class="w-100 mb-auto">
+            <nav class="navbar navbar-expand-lg py-4">
+                <div class="container-fluid">
+                    <a href="index.html" aria-label="Voltar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left preview-icon"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                    </a>
+                    <h1 class="title text-center"><span class="text-primary">Fox</span>Words</h1>
+                </div>
+            </nav>
+        </header>
+    
+        <main id="main-app" class="w-100">
+            <div class="container">
+                <div class="list-themes">
+                    <!-- load js -->
+                </div>
+                <!-- <a href="criando-um-tema.html" class="btn btn-outline-secondary w-100 mb-2 mt-5">Criar um tema</a> -->
+            </div>
+        </main>
+
+        <footer id="footer-app" class="w-100 mt-auto py-4">
+            <div class="container">
+                <a href="sobre.html">Sobre o Fox Words</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalContinueGame" tabindex="-1" aria-labelledby="modalContinueGameLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <h3>Atenção</h3>
+                    <p>Você tem um jogo em andamento.<br>Tem certeza que deseja um novo jogo?</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-sm btn-primary" data-fox-words-status="restart-new-game" data-fox-words-theme-slug="">Novo jogo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>

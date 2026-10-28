@@ -1,0 +1,12 @@
+#header-app{
+
+    a{
+        @extend .text-secondary;
+    }
+
+    .title{
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+}
