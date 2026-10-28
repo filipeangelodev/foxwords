@@ -194,29 +194,37 @@ const load_fox_words_data = () => {
     $themes = get_fox_words_list();
     $data = get_fox_words();
 
-    if( $data.theme ){
+    if( typeof $data != undefined && $data != null ){
+        
+        if( $data.theme ){
 
-        $('.letters-lenght').text($data.words.length + ' Letras');
+            $('.letters-lenght').text($data.words.length + ' Letras');
 
-        $.each($data.words, function(index, letter){
-            $('.the-words').append('<li data-the-letter="'+ letter +'">'+ letter +'</li>');
-        });
+            $.each($data.words, function(index, letter){
+                $('.the-words').append('<li data-the-letter="'+ letter +'">'+ letter +'</li>');
+            });
 
-        $.each($data.lettersCorrect, function(index, value){
-            $('[data-the-letter="'+ value +'"]').addClass('active');
-            $('.is-game [data-target-letter="'+ value +'"]').addClass('btn-success').prop('disabled', true);
-        });
+            $.each($data.lettersCorrect, function(index, value){
+                $('[data-the-letter="'+ value +'"]').addClass('active');
+                $('.is-game [data-target-letter="'+ value +'"]').addClass('btn-success').prop('disabled', true);
+            });
 
-        $.each($data.lettersWrong, function(index, value){
-            $('.is-game [data-target-letter="'+ value +'"]').addClass('btn-danger').prop('disabled', true);
-        });
+            $.each($data.lettersWrong, function(index, value){
+                $('.is-game [data-target-letter="'+ value +'"]').addClass('btn-danger').prop('disabled', true);
+            });
 
-        $('.the-theme').html('<strong>'+ $data.theme +'</strong>');
-        $('[data-fox-words-status="continue"]').removeClass('d-none');
+            $('.the-theme').html('<strong>'+ $data.theme +'</strong>');
+            $('[data-fox-words-status="continue"]').removeClass('d-none');
+
+        }else{
+            reset_fox_words_data();
+        }
 
     }else{
         reset_fox_words_data();
     }
+
+    
 
     $.each($themes, function(slug, theme){
         $('.list-themes').append(`<button type="button" class="btn btn-secondary w-100 mb-2" data-target-theme="${slug}">${theme.name}</button>`);
